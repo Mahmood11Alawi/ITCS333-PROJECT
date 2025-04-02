@@ -2,9 +2,175 @@
 <html lang="en">
 <head>
 <title>study Group Finder</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-
+    <div class="container">
+        <nav class="tabs">
+            <a href="#listing" class="active">Groups</a>
+            <a href="#create">Create</a>
+            
+        </nav>
+        <section id="listing" class="view active">
+            <header>
+                <h1>Study Groups</h1>
+                <a href="#create" class="new-group">+ New</a>
+            </header>
+            <div class="search">
+                <input type="text" placeholder="Search groups...">
+                <select>
+                    <option>All Subjects</option>
+                    <option>Computer Science</option>
+                    <option>Mathematics</option>
+                    <option>English</option>
+                </select>
+            </div>
+            <div class="groups">
+                <a href="#detail-cs" class="group">
+                    <span class="subject cs">CS</span>
+                    <div>
+                        <h3>ITCS214 -- Data Structures</h3>
+                        <p>Wed 12-2pm -- Library</p>
+                        <span>20 members</span>
+                    </div>
+                </a>
+                <a href="#detail-math" class="group">
+                    <span class="subject math">Math</span>
+                    <div>
+                        <h3>MATHS122 -- Calculus II</h3>
+                        <p>Mon 4-6pm -- Room 204</p>
+                        <span>15 members</span>
+                    </div>
+                </a>
+                <a href="#detail-eng" class="group">
+                    <span class="subject eng">Eng</span>
+                    <div>
+                        <h3>ENGL126 -- English for Science II</h3>
+                        <p>Fri 1-3pm -- Online</p>
+                        <span>40 members</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section id="create" class="view">
+            <header>
+                <a href="#listing" class="back">← Back</a>
+                <h1>Create Group</h1>
+            </header>
+            <form class="create-form">
+                <label>
+                    Group Name
+                    <input type="text" placeholder="e.g., Data Structures Study" required>
+                </label> 
+                <label>
+                    Subject
+                    <select required>
+                        <option value="">Select subject</option>
+                        <option>Computer Science</option>
+                        <option>Mathematics</option>
+                        <option>English</option>
+                    </select>
+                </label>
+                <label>
+                    Meeting Time
+                    <input type="datetime-local" required>
+                </label>
+                
+                <label>
+                    Location
+                    <input type="text" placeholder="e.g., Library Room 1014">
+                </label>
+                
+                <div class="form-actions">
+                    <button type="submit">Create</button>
+                    <a href="#listing" class="cancel">Cancel</a>
+                </div>
+            </form>
+        </section>
+        <section id="detail-cs" class="view">
+            <header>
+                <a href="#listing" class="back">← Back</a>
+                <h1>Group Details</h1>
+            </header>
+            <div class="group-detail">
+                <span class="subject cs">CS</span>
+                <h2>ITCS214 -- Data Structures</h2>
+                <div class="details">
+                    <p><strong>When:</strong> Wednesdays, 12-2pm</p>
+                    <p><strong>Where:</strong> Library Study Room A</p>
+                    <p><strong>Members:</strong> 20 students</p>
+                </div>
+                <div class="description">
+                    <h3>Description</h3>
+                    <p>Weekly study sessions for ITCS214 Data Structures course. We solve problems together and review concepts.</p>
+                </div>
+                <div class="comments">
+                    <h3>Comments</h3>
+                    <div class="comment">
+                        <p>Does anyone have last week's notes?</p>
+                        <span>- Student250, 2 days ago</span>
+                    </div>
+                    <textarea placeholder="Add a comment..."></textarea>
+                    <button>Post</button>
+                </div>
+            </div>
+        </section>
+        <section id="detail-math" class="view">
+            <header>
+                <a href="#listing" class="back">← Back</a>
+                <h1>Group Details</h1>
+            </header>
+            <div class="group-detail">
+                <span class="subject math">Math</span>
+                <h2>MATHS122 -- Calculus II</h2>
+                <div class="details">
+                    <p><strong>When:</strong> Mondays, 4-6pm</p>
+                    <p><strong>Where:</strong> Room 204, Math Building</p>
+                    <p><strong>Members:</strong> 15 students</p>
+                </div>
+                <div class="description">
+                    <h3>Description</h3>
+                    <p>Study group for Calculus II course. We focus on integration techniques, series, and applications. Bring your questions and let's solve problems together!</p>
+                </div>
+                <div class="comments">
+                    <h3>Comments</h3>
+                    <div class="comment">
+                        <p>Can someone explain the Taylor series concept from last lecture?</p>
+                        <span>- MathStudent101, 1 day ago</span>
+                    </div>
+                    <textarea placeholder="Add a comment..."></textarea>
+                    <button>Post</button>
+                </div>
+            </div>
+        </section>
+        <section id="detail-eng" class="view">
+            <header>
+                <a href="#listing" class="back">← Back</a>
+                <h1>Group Details</h1>
+            </header>
+            <div class="group-detail">
+                <span class="subject eng">Eng</span>
+                <h2>ENGL126 -- English for Science II</h2>
+                <div class="details">
+                    <p><strong>When:</strong> Fridays, 1-3pm</p>
+                    <p><strong>Where:</strong> Online (Zoom link shared in group)</p>
+                    <p><strong>Members:</strong> 40 students</p>
+                </div>
+                <div class="description">
+                    <h3>Description</h3>
+                    <p>This group helps science students improve their academic English skills. We practice technical writing, scientific presentations, and specialized vocabulary. All proficiency levels welcome!</p>
+                </div>
+                <div class="comments">
+                    <h3>Comments</h3>
+                    <div class="comment">
+                        <p>When is the next presentation practice session? I need feedback on my upcoming talk.</p>
+                        <span>- BioStudent202, 3 hours ago</span>
+                    </div>
+                    <textarea placeholder="Add a comment..."></textarea>
+                    <button>Post</button>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

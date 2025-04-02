@@ -1,0 +1,300 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabs a {
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #666;
+}
+
+.tabs a.active {
+    color: #4a6fa5;
+    border-bottom: 2px solid #4a6fa5;
+}
+
+
+.view {
+    display: none;
+}
+
+#listing {
+    display: block;
+}
+
+.view:target {
+    display: block;
+}
+
+.view:target ~ .view:not(:target) {
+    display: none;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0 auto 0 0;
+}
+
+.back, .new-group {
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #4a6fa5;
+}
+
+.new-group {
+    background: #4a6fa5;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.groups {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.group {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.subject {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.subject.cs { background: #4a6fa5; }
+.subject.math { background: #8a4fff; }
+.subject.eng { background: #f94144; }
+
+.group h3 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+}
+
+.group p {
+    margin: 0 0 4px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.group span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.create-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.create-form input, 
+.create-form select,
+.create-form textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.create-form input:focus, 
+.create-form select:focus,
+.create-form textarea:focus {
+    border-color: #4a6fa5;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-actions button {
+    background: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-actions button:hover {
+    background: #3a5a80;
+    transform: translateY(-1px);
+}
+
+.form-actions .cancel {
+    padding: 8px 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.form-actions .cancel:hover {
+    background-color: #f0f0f0;
+}
+
+.group-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.group-detail .subject {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+}
+
+.group-detail h2 {
+    margin: 0;
+}
+
+.details p {
+    margin: 8px 0;
+}
+
+.description {
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+}
+
+.comments {
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+}
+
+.comment {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: transform 0.2s ease;
+}
+
+.comment:hover {
+    transform: translateX(2px);
+}
+
+.comment span {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.comments textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.3s ease;
+}
+
+.comments textarea:focus {
+    border-color: #4a6fa5;
+    outline: none;
+}
+
+.comments button {
+    background: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comments button:hover {
+    background: #3a5a80;
+}
+
+@media (max-width: 480px) {
+    .search {
+        flex-direction: column;
+    }
+    
+    .group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .subject {
+        margin-bottom: 8px;
+    }
+}
