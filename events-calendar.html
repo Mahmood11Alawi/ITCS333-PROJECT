@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Hub - Events Calendar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong>Campus Hub - Events</strong></li>
+            </ul>
+            <ul>
+                <li><a href="create-event.html" role="button">Add Event</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Upcoming Events</h1>
+        
+        <div class="filters">
+            <input type="search" placeholder="Search events..." aria-label="Search">
+            <select aria-label="Category filter">
+                <option>All Categories</option>
+                <option>Academic</option>
+                <option>Social</option>
+                <option>Sports</option>
+            </select>
+            <select aria-label="Sort by">
+                <option>Date: Ascending</option>
+                <option>Date: Descending</option>
+            </select>
+        </div>
+
+        <section class="event-grid">
+            <article class="event-card">
+                <h3>Annual Science Fair</h3>
+                <p>📅 March 15, 2024</p>
+                <p>📍 Main Auditorium</p>
+                <a href="event-detail.html" role="button">View Details</a>
+            </article>
+
+            <article class="event-card">
+                <h3>Career Workshop</h3>
+                <p>📅 March 20, 2024</p>
+                <p>📍 Business Building</p>
+                <a href="event-detail.html" role="button">View Details</a>
+            </article>
+        </section>
+
+        <div class="pagination">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+    </main>
+</body>
+</html>
