@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Campus News </title>
+    <link rel="stylesheet" href="news.css" />
+</head>
+<body>
+    <header>
+        <h1>Campus News</h1>
+    </header>
+    <main>
+        <!-- Search and Filter Section -->
+<section class="news-controls">
+    <div class="search-bar">
+        <input type="text" placeholder="Search news..." />
+        <button class="search-button">Search</button>
+    </div>
+    <div class="filters">
+        <label for="category-filter">Filter by Category:</label>
+        <select id="category-filter">
+            <option value="all">All</option>
+            <option value="events">Events</option>
+            <option value="announcements">Announcements</option>
+            <option value="student-life">Student Life</option>
+        </select>
+    </div>
+    <div class="sorting">
+        <label for="sort-news">Sort by:</label>
+        <select id="sort-news">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="title">Title (A-Z)</option>
+        </select>
+    </div>
+</section>
+
+            </div>
+        </section>
+
+        <!-- News Items -->
+        <section class="news-list">
+            <article class="news-item">
+                <img src="news1.jpg" alt="First News Title" class="news-thumb" />
+                <h2>First News Title</h2>
+                <p>A short summary of the news item.</p>
+                <span>May 20, 2025</span>
+                <input type="checkbox" id="news1-details-toggle" class="details-toggle">
+                <label for="news1-details-toggle" class="details-button">Read More</label>
+                <div class="news-details">
+                    <p>This section shows all the details of the news, including images, quotes, and extra information.</p>
+                        <textarea placeholder="Write your comment here..."></textarea>
+                        <button class="comment-button">Post Comment</button>
+                </div>
+                
+
+
+            </article>
+            <article class="news-item">
+                <img src="news2.jpg" alt="News 2 Image" class="news-thumb" />
+                <h2>Second News Title</h2>
+                <p>Another brief summary of a news item.</p>
+                <span>March 18, 2025</span>
+                <input type="checkbox" id="news2-details-toggle" class="details-toggle">
+                <label for="news2-details-toggle" class="details-button">Read More</label>
+                <div class="news-details">
+                    <p>This section shows all the details of the news, including images, quotes, and extra information.</p>
+                        <textarea placeholder="Write your comment here..."></textarea>
+                        <button class="comment-button">Post Comment</button>
+                </div>
+               
+
+            </article>
+        </section>
+    </main>
+    <div class="button-container">
+        <a href="NewsAdmin.html" class="add-news-button">Add News</a>
+    </div>
+</body>
+</html>
