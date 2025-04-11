@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Listing</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="rgb-background"></div>
+    
+    <header class="container">
+        <nav>
+            <a href="student-marketplace.html" class="home-link">← Back to Marketplace</a>
+            <h1>📦 Create New Listing</h1>
+        </nav>
+    </header>
+
+    <main class="container">
+        <form class="create-form" action="student-marketplace.html" method="POST">
+            <div class="form-group">
+                <label for="item-name">Item Name</label>
+                <input type="text" id="item-name" name="item-name" required 
+                    placeholder="e.g., Calculus II Textbook">
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group">
+                    <span class="currency">$</span>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required 
+                        placeholder="30.00">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="books">Books</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" required
+                    placeholder="Describe your item..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Upload Photos (max 3)</label>
+                <input type="file" id="images" name="images" 
+                    accept="image/*" multiple>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Email</label>
+                <input type="email" id="contact" name="contact" required 
+                    placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="button">Publish Listing</button>
+                <a href="student-marketplace.html" class="button secondary">Cancel</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
