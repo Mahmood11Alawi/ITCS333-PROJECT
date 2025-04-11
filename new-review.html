@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Course Review</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="rgb-background"></div>
+    
+    <header class="container">
+        <nav>
+            <a href="course-reviews.html" class="home-link">← Back to Reviews</a>
+            <h1>✍️ Write New Review</h1>
+        </nav>
+    </header>
+
+    <main class="container">
+        <form class="create-form" action="course-reviews.html" method="POST">
+            <div class="form-group">
+                <label for="course-name">Course Name</label>
+                <input type="text" id="course-name" name="course-name" required placeholder="e.g., ITCS 214 - Data Structures">
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="3">★★★☆☆</option>
+                    <option value="2">★★☆☆☆</option>
+                    <option value="1">★☆☆☆☆</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="review">Your Review</label>
+                <textarea id="review" name="review" rows="6" required 
+                    placeholder="Share your experience with this course..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="button">Publish Review</button>
+                <a href="course-reviews.html" class="button secondary">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Add any necessary JavaScript here
+    </script>
+</body>
+</html>
