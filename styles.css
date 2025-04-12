@@ -690,4 +690,21 @@ nav {
             transform: scale(1.03);
         }
         
+        .review-content {
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        .rating {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        .review-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
         
