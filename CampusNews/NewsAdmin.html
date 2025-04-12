@@ -3,70 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage News</title>
-    <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <div class="rgb-background"></div>
 </head>
-<body> 
+<body>
     <header>
-        <h1> Manage News</h1>
+        <h1>Manage News</h1>
     </header>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>News Title</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="news1.jpg" alt="News 1" class="news-thumb" />
-                        First News Title
-                    </td>
-                    <td>May 20, 2025</td>
-                    <td>
-                        <button>Edit</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="news2.jpg" alt="News 2" class="news-thumb" />
-                        Second News Title
-                    </td>
-                    <td>March 18, 2025</td>
-                    <td>
-                        <button>Edit</button>
-                        <button class="delete">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <main class="container">
+        <div class="table-container">
+            <table class="card">
+                <thead>
+                    <tr>
+                        <th>News Title</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="news1.jpg" alt="News 1" class="news-thumb" />
+                            <span>First News Title</span>
+                        </td>
+                        <td>May 20, 2025</td>
+                        <td>
+                            <button class="button">Edit</button>
+                            <button class="button delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="news2.jpg" alt="News 2" class="news-thumb" />
+                            <span>Second News Title</span>
+                        </td>
+                        <td>March 18, 2025</td>
+                        <td>
+                            <button class="button">Edit</button>
+                            <button class="button delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- Add News Form -->
-        <section class="add-news">
+        <section class="add-news card">
             <h2>Add New News</h2>
-            <form>
-                <label for="news-date">Date:</label>
-                <input type="date" id="news-date" name="news-date" required>
+            <form class="grid">
+                <div class="form-group">
+                    <label for="news-date">Date:</label>
+                    <input type="date" id="news-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="news-title">Title:</label>
+                    <input type="text" id="news-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="news-description">Description:</label>
+                    <textarea id="news-description" required rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="news-image">Image:</label>
+                    <input type="file" id="news-image" accept="image/*" required>
+                </div>
 
-                <label for="news-title">Title:</label>
-                <input type="text" id="news-title" name="news-title" required>
-
-                <label for="news-description">Description:</label>
-                <textarea id="news-description" name="news-description" required></textarea>
-
-                <label for="news-image">Image:</label>
-                <input type="file" id="news-image" name="news-image" accept="image/*" required>
-
-                <button type="submit">Add News</button>
+                <button type="submit" class="button">Add News</button>
             </form>
         </section>
 
-        <!-- Back to Main Page Button -->
+        <!-- Back Button -->
         <div class="button-container">
-            <a href="MainNews.html" class="back-button">Back to Main Page</a>
+            <a href="MainNews.html" class="button secondary">Back to Main Page</a>
         </div>
     </main>
 </body>
