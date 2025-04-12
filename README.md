@@ -12,8 +12,8 @@
 ### Sayed Mahmood Alawi (ID: 20194103)
 **Contributions**:  
 📅 Event Calendar Module  
-🛒 Student Marketplace Module
-🏃 Club Activities Module
+🛒 Student Marketplace Module  
+🏃 Club Activities Module  
 
 ---
 
