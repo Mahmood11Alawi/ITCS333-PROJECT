@@ -42,7 +42,6 @@ body {
     margin: 0;
     padding: 0;
     color: var(--text-color);
-    background-color: linear-gradient(45deg,#ff005a1a,#0a18ff1a,#00ff991a);
     font-size: 1rem;
 }
 
@@ -874,3 +873,10 @@ html, body {
     animation: none !important;
     transition: none !important;
 }
+@keyframes rgb-wave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
