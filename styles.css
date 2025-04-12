@@ -667,3 +667,16 @@ nav {
         .subject.math { background: #e74c3c; color: #fff; }
         .subject.eng { background: #3498db; color: #fff; }
         
+        .item-detail {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        .item-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .item-info {
+            padding: 1.5rem;
+        }
