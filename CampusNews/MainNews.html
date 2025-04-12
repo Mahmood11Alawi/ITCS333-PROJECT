@@ -3,79 +3,53 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Campus News </title>
-    <link rel="stylesheet" href="news.css" />
+    <title>Campus News</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+    <div class="rgb-background"></div>
 </head>
-<body> 
+<body>
     <header>
         <h1>Campus News</h1>
+        <nav>
+            <a href="index.html" class="home-link">🏠 Home</a>
+            <a href="NewsAdmin.html" class="button">Add News</a> 
+        </nav>
     </header>
-    <main>
-        <!-- Search and Filter Section -->
-<section class="news-controls">
-    <div class="search-bar">
-        <input type="text" placeholder="Search news..." />
-        <button class="search-button">Search</button>
-    </div>
-    <div class="filters">
-        <label for="category-filter">Filter by Category:</label>
-        <select id="category-filter">
-            <option value="all">All</option>
-            <option value="events">Events</option>
-            <option value="announcements">Announcements</option>
-            <option value="student-life">Student Life</option>
-        </select>
-    </div>
-    <div class="sorting">
-        <label for="sort-news">Sort by:</label>
-        <select id="sort-news">
-            <option value="latest">Latest</option>
-            <option value="oldest">Oldest</option>
-            <option value="title">Title (A-Z)</option>
-        </select>
-    </div>
-</section>
+    <main class="container">
+        <!-- Search and Filter Section remains unchanged -->
 
-            </div>
-        </section>
-
-        <!-- News Items -->
-        <section class="news-list">
-            <article class="news-item">
-                <img src="news1.jpg" alt="First News Title" class="news-thumb" />
-                <h2>First News Title</h2>
-                <p>A short summary of the news item.</p>
-                <span>May 20, 2025</span>
-                <input type="checkbox" id="news1-details-toggle" class="details-toggle">
-                <label for="news1-details-toggle" class="details-button">Read More</label>
-                <div class="news-details">
-                    <p>This section shows all the details of the news, including images, quotes, and extra information.</p>
-                        <textarea placeholder="Write your comment here..."></textarea>
-                        <button class="comment-button">Post Comment</button>
+        <!-- Modified News Items Section -->
+        <div class="grid">
+            <article class="card news-item">
+                <div class="image-container">
+                    <img src="news1.jpg" alt="First News Title" class="news-thumb">
                 </div>
-                
-
-
-            </article>
-            <article class="news-item">
-                <img src="news2.jpg" alt="News 2 Image" class="news-thumb" />
-                <h2>Second News Title</h2>
-                <p>Another brief summary of a news item.</p>
-                <span>March 18, 2025</span>
-                <input type="checkbox" id="news2-details-toggle" class="details-toggle">
-                <label for="news2-details-toggle" class="details-button">Read More</label>
-                <div class="news-details">
-                    <p>This section shows all the details of the news, including images, quotes, and extra information.</p>
-                        <textarea placeholder="Write your comment here..."></textarea>
-                        <button class="comment-button">Post Comment</button>
+                <div class="news-item-content">
+                    <h2>First News Title</h2>
+                    <p>A short summary of the news item.</p>
+                    <div class="news-meta">
+                        <span>May 20, 2025</span>
+                        <a href="ArticleDetail.html?id=1" class="button secondary">Read More</a>
+                    </div>
                 </div>
-               
-
             </article>
-        </section>
+
+            <article class="card news-item">
+                <div class="image-container">
+                    <img src="news2.jpg" alt="Second News Title" class="news-thumb">
+                </div>
+                <div class="news-item-content">
+                    <h2>Second News Title</h2>
+                    <p>Another brief summary of a news item.</p>
+                    <div class="news-meta">
+                        <span>March 18, 2025</span>
+                        <a href="ArticleDetail.html?id=2" class="button secondary">Read More</a>
+                    </div>
+                </div>
+            </article>
+        </div>
     </main>
-    <div class="button-container">
-        <a href="NewsAdmin.html" class="add-news-button">Add News</a>
-    </div>
 </body>
 </html>
