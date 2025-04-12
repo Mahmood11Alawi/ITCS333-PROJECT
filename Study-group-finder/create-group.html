@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Study Group</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <div class="rgb-background"></div>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>Create New Group</h1>
+            <a href="study-finder.html" class="button secondary">← Back to Groups</a>
+        </div>
+
+        <form class="create-form card" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="group-name">Group Name</label>
+                <input type="text" id="group-name" placeholder="e.g., Data Structures Study" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                    <option value="">Select subject</option>
+                    <option>Computer Science</option>
+                    <option>Mathematics</option>
+                    <option>English</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="meeting-time">Meeting Time</label>
+                <input type="datetime-local" id="meeting-time" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="e.g., Library Room 1014" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="button">Create Group</button>
+                <a href="study-finder.html" class="button secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

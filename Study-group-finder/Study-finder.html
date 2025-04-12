@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Group Finder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <div class="rgb-background"></div>
+</head>
+<body>
+    <div class="container">
+        <nav class="tabs">
+            <a href="../index.html" class="home-link">🏠 Home</a>
+
+        </nav>
+
+       
+        <section class="card">
+            <header>
+                <h1>Study Groups</h1>
+                <a href="create-group.html" class="button">+ New Group</a>
+            </header>
+            <div class="search card">
+                <input type="text" placeholder="Search groups...">
+                <select>
+                    <option>All Subjects</option>
+                    <option>Computer Science</option>
+                    <option>Mathematics</option>
+                    <option>English</option>
+                </select>
+            </div>
+            <div class="groups">
+                <div class="event-card" id="cs-group">
+                    <span class="subject-badge cs">CS</span>
+                    <h3>ITCS214 - Data Structures</h3>
+                    <p class="event-time">Wed 12-2pm</p>
+                    <p class="event-location">Library Study Room A</p>
+                    <div class="event-meta">
+                        <span>20 members</span>
+                        <a href="#detail-cs" class="button-secondary">Details</a>
+                    </div>
+                    <div class="event-actions">
+                        <button class="join-button">Join Group</button>
+                    </div>
+                </div>
+    
+                
+                <div class="event-card" id="math-group">
+                    <span class="subject-badge math">Math</span>
+                    <h3>MATHS122 - Calculus II</h3>
+                    <p class="event-time">Mon 4-6pm</p>
+                    <p class="event-location">Room 204, Math Building</p>
+                    <div class="event-meta">
+                        <span>15 members</span>
+                        <a href="#detail-math" class="button-secondary">Details</a>
+                    </div>
+                    <div class="event-actions">
+                        <button class="join-button">Join Group</button>
+                    </div>
+                </div>
+    
+          
+                <div class="event-card" id="eng-group">
+                    <span class="subject-badge eng">Eng</span>
+                    <h3>ENGL126 - English for Science II</h3>
+                    <p class="event-time">Fri 1-3pm</p>
+                    <p class="event-location">Online (Zoom)</p>
+                    <div class="event-meta">
+                        <span>40 members</span>
+                        <a href="#detail-eng" class="button-secondary">Details</a>
+                    </div>
+                    <div class="event-actions">
+                        <button class="join-button">Join Group</button>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="detail-cs" class="event-detail view">
+                <a href="#" class="button-secondary back-button">← Back to Groups</a>
+                <div class="event-header">
+                    <span class="subject-badge cs large">CS</span>
+                    <h2>ITCS214 - Data Structures</h2>
+                </div>
+                
+                <div class="event-info">
+                    <p><strong>When:</strong> Wednesdays, 12-2pm</p>
+                    <p><strong>Where:</strong> Library Study Room A</p>
+                    <p><strong>Members:</strong> 20 students</p>
+                    <p><strong>Instructor:</strong> Dr. Ali Mohammed</p>
+                    <p><strong>Current Topic:</strong> Binary Search Trees</p>
+                </div>
+                
+                <div class="event-description">
+                    <h3>Description</h3>
+                    <p>Weekly study sessions for ITCS214 Data Structures course. We solve problems together and review concepts. All skill levels welcome!</p>
+                    <p><strong>Upcoming Session:</strong> This Wednesday we'll cover tree traversal algorithms.</p>
+                </div>
+                
+                <div class="study-materials">
+                    <h3>Study Materials</h3>
+                    <ul>
+                        <li>Textbook: Introduction to Algorithms (CLRS)</li>
+                        <li>Practice Problems: Chapter 12</li>
+                        <li>Online Resource: Visualgo.net</li>
+                    </ul>
+                </div>
+                
+                <div class="comments-section">
+                    <h3>Discussion (4)</h3>
+                    <div class="comment-card">
+                        <p class="comment-text">Does anyone have last week's notes?</p>
+                        <p class="comment-meta">- Student250, 2 days ago</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <p class="comment-text">I've posted the code examples on GitHub for everyone to review.</p>
+                        <p class="comment-meta">- CS_Tutor, 1 day ago</p>
+                    </div>
+                    
+                    <div class="comment-form">
+                        <textarea placeholder="Add to the discussion..."></textarea>
+                        <button class="button-primary">Post Comment</button>
+                    </div>
+                </div>
+            </section>
+    
+        
+            <section id="detail-math" class="event-detail view">
+                <a href="#" class="button-secondary back-button">← Back to Groups</a>
+                <div class="event-header">
+                    <span class="subject-badge math large">Math</span>
+                    <h2>MATHS122 - Calculus II</h2>
+                </div>
+                
+                <div class="event-info">
+                    <p><strong>When:</strong> Mondays, 4-6pm</p>
+                    <p><strong>Where:</strong> Room 204, Math Building</p>
+                    <p><strong>Members:</strong> 15 students</p>
+                    <p><strong>Instructor:</strong> Dr. Ahmed Mahmoud</p>
+                    <p><strong>Current Topic:</strong> Integration Techniques</p>
+                </div>
+                
+                <div class="event-description">
+                    <h3>Description</h3>
+                    <p>Study group for Calculus II course. We focus on integration techniques, series, and applications. Bring your questions and let's solve problems together! Weekly problem sets and collaborative learning environment.</p>
+                    <p><strong>Upcoming Session:</strong> Next Monday we'll cover trigonometric substitution methods.</p>
+                </div>
+                
+                <div class="study-materials">
+                    <h3>Study Materials</h3>
+                    <ul>
+                        <li>Textbook: Calculus Early Transcendentals (8th Ed)</li>
+                        <li>Practice Problems: Chapter 7.1-7.3</li>
+                        <li>Reference: MIT OpenCourseWare Calculus Videos</li>
+                    </ul>
+                </div>
+                
+                <div class="comments-section">
+                    <h3>Discussion (6)</h3>
+                    <div class="comment-card">
+                        <p class="comment-text">Can someone explain the Taylor series concept from last lecture?</p>
+                        <p class="comment-meta">- MathStudent101, 1 day ago</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <p class="comment-text">I've posted the solutions to this week's problem set in the shared drive.</p>
+                        <p class="comment-meta">- CalculusTA, 3 days ago</p>
+                    </div>
+                    
+                    <div class="comment-form">
+                        <textarea placeholder="Add to the discussion..."></textarea>
+                        <button class="button-primary">Post Comment</button>
+                    </div>
+                </div>
+            </section>
+    
+     
+            <section id="detail-eng" class="event-detail view">
+                <a href="#" class="button-secondary back-button">← Back to Groups</a>
+                <div class="event-header">
+                    <span class="subject-badge eng large">Eng</span>
+                    <h2>ENGL126 - English for Science II</h2>
+                </div>
+                
+                <div class="event-info">
+                    <p><strong>When:</strong> Fridays, 1-3pm</p>
+                    <p><strong>Where:</strong> Online (Zoom link shared in group)</p>
+                    <p><strong>Members:</strong> 40 students</p>
+                    <p><strong>Facilitator:</strong> Prof. Sarah Johnson</p>
+                    <p><strong>Current Focus:</strong> Scientific Paper Writing</p>
+                </div>
+                
+                <div class="event-description">
+                    <h3>Description</h3>
+                    <p>This group helps science students improve their academic English skills. We practice technical writing, scientific presentations, and specialized vocabulary. All proficiency levels welcome!</p>
+                    <p><strong>This Week:</strong> Workshop on writing effective abstracts for research papers.</p>
+                </div>
+                
+                <div class="study-materials">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li>Guide: "Writing Science in English" (provided)</li>
+                        <li>Template: Research paper structure</li>
+                        <li>Vocabulary: List of academic phrases</li>
+                    </ul>
+                </div>
+                
+                <div class="comments-section">
+                    <h3>Discussion (12)</h3>
+                    <div class="comment-card">
+                        <p class="comment-text">When is the next presentation practice session? I need feedback on my upcoming talk.</p>
+                        <p class="comment-meta">- BioStudent202, 3 hours ago</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <p class="comment-text">I've created a shared document with common grammar mistakes we should avoid.</p>
+                        <p class="comment-meta">- LingHelper, 1 day ago</p>
+                    </div>
+                    
+                    <div class="comment-form">
+                        <textarea placeholder="Add to the discussion..."></textarea>
+                        <button class="button-primary">Post Comment</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

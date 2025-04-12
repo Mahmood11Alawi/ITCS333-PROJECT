@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Event</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="..\styles.css">
+    <div class="rgb-background"></div>
+</head>
+<body>
+    <main class="container">
+        <div class="form-container">
+            <nav>
+                <a href="events-calendar.html">&larr; Back to Events</a>
+            </nav>
+            
+            <h1>Create New Event</h1>
+            
+            <form action="events-calendar.html">
+                <label class="required">
+                    Event Title
+                    <input type="text" required placeholder="Enter event title">
+                </label>
+
+                <div class="grid">
+                    <label class="required">
+                        Date
+                        <input type="date" required>
+                    </label>
+                    
+                    <label class="required">
+                        Time
+                        <input type="time" required>
+                    </label>
+                </div>
+
+                <label class="required">
+                    Location
+                    <input type="text" required placeholder="Enter venue">
+                </label>
+
+                <label>
+                    Description
+                    <textarea rows="4" placeholder="Event details..."></textarea>
+                </label>
+
+                <label class="required">
+                    Event Type
+                    <select required>
+                        <option value="">Select category</option>
+                        <option>Academic</option>
+                        <option>Social</option>
+                        <option>Sports</option>
+                    </select>
+                </label>
+
+                <div class="grid">
+                    <button type="submit" class="contrast">Create Event</button>
+                    <a href="events-calendar.html" role="button" class="secondary">
+                        Cancel
+                    </a>
+                </div>
+                <div class="card-wrapper">
+                    <article class="card">
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <!-- Your content here -->
+                        </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
