@@ -175,7 +175,7 @@ h3 { font-size: 1.5rem; }
 }
 
 /* Forms */
-input, select, textarea {
+input, select, textarea ,option {
     background: var(--card-bg);
     border: 2px solid var(--border-color);
     color: var(--text-color);
@@ -185,10 +185,11 @@ input, select, textarea {
     transition: border-color 0.3s ease;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus, select:focus, textarea:focus, option:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(18, 52, 88, 0.25);
+
 }
 .module-grid {
     display: grid;
