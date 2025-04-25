@@ -1,55 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus News</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
     <div class="rgb-background"></div>
 </head>
 <body>
-    <header>
-        <h1>Campus News</h1>
+    <header class="container">
         <nav>
-            <a href="../index.html" class="home-link">🏠 Home</a>
-            <a href="NewsAdmin.html" class="button">Add News</a> 
+            <a href="../index.html" class="button ">Back</a>
+            <h1>Campus News</h1>
+            <a href="NewsAdmin.html" class="button">Manage News</a>
         </nav>
+        
     </header>
+    
     <main class="container">
-        <!-- Search and Filter Section remains unchanged -->
+        <nav class="filters">
+            <input type="search" id="search-news" placeholder="Search events..." aria-label="Search">
+            
+            <select id="filter-news">
+                <option value="title">Filter by Title</option>
+                <option value="date">Filter by Date</option>
+            </select>
+        </nav>
+        <div id="news-container" class="grid"></div>
+        <div id="pagination-controls"></div>
+            
+   
 
-        <!-- Modified News Items Section -->
-        <div class="grid">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+    const apiUrl = "Posts.json"; // JSON file URL
+    const newsContainer = document.getElementById("news-container");
+    const paginationControls = document.getElementById("pagination-controls");
+    const searchInput = document.getElementById("search-news");
+    const filterSelect = document.getElementById("filter-news");
+    const itemsPerPage = 2; // Number of news items per page
+    let currentPage = 1;
+    let data = []; // Stores original data
+    let filteredData = []; // Stores filtered data
+
+    // Fetch Data
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(fetchedData => {
+            data = fetchedData;
+            filteredData = [...data];
+            renderPage(currentPage);
+            renderPagination();
+        })
+        .catch(error => console.error("Error fetching news:", error));
+
+    // Render News Items Based on Current Page
+    function renderPage(page) {
+        const start = (page - 1) * itemsPerPage;
+        const end = page * itemsPerPage;
+        const pageData = filteredData.slice(start, end);
+
+        newsContainer.innerHTML = pageData.map(item => `
             <article class="card news-item">
                 <div class="image-container">
-                    <img src="news1.jpg" alt="First News Title" class="news-thumb">
+                    <img src="${item.image}" alt="${item.title}" class="news-thumb">
                 </div>
                 <div class="news-item-content">
-                    <h2>First News Title</h2>
-                    <p>A short summary of the news item.</p>
+                    <h2>${item.title}</h2>
+                    <p>${item.body.substring(0, 150)}...</p>
                     <div class="news-meta">
-                        <span>May 20, 2025</span>
-                        <a href="ArticleDetail.html?id=1" class="button secondary">Read More</a>
+                        <span>${item.date}</span>
+                        <a href="ArticleDetail.html?id=${item.id}" class="button secondary">Read More</a>
                     </div>
                 </div>
             </article>
+        `).join("");
 
-            <article class="card news-item">
-                <div class="image-container">
-                    <img src="news2.jpg" alt="Second News Title" class="news-thumb">
-                </div>
-                <div class="news-item-content">
-                    <h2>Second News Title</h2>
-                    <p>Another brief summary of a news item.</p>
-                    <div class="news-meta">
-                        <span>March 18, 2025</span>
-                        <a href="ArticleDetail.html?id=2" class="button secondary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </main>
+        if (pageData.length === 0) {
+            newsContainer.innerHTML = `<p>No results found / لم يتم العثور على نتائج.</p>`;
+        }
+    }
+    // Search Functionality (Supports Arabic & English)
+    searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        filteredData = data.filter(item =>
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.body.toLowerCase().includes(searchTerm)
+        );
+        currentPage = 1;
+        renderPage(currentPage);
+        renderPagination();
+    });
+
+    // Filtering Functionality
+    filterSelect.addEventListener("change", () => {
+        const filterValue = filterSelect.value;
+        if (filterValue === "date") {
+            filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        } else if (filterValue === "title") {
+            filteredData.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        currentPage = 1;
+        renderPage(currentPage);
+        renderPagination();
+    });
+
+    // Render Pagination Buttons
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        paginationControls.innerHTML = `
+            <button ${currentPage === 1 ? "disabled" : ""} onclick="changePage(${currentPage - 1})">Previous</button>
+            ${Array.from({ length: totalPages }, (_, i) => `
+                <button ${currentPage === i + 1 ? "disabled" : ""} onclick="changePage(${i + 1})">${i + 1}</button>
+            `).join("")}
+            <button ${currentPage === totalPages ? "disabled" : ""} onclick="changePage(${currentPage + 1})">Next</button>
+        `;
+    }
+
+    // Change Page
+    window.changePage = (page) => {
+        currentPage = page;
+        renderPage(currentPage);
+        renderPagination();
+    };
+
+    // Search Functionality (Supports Arabic & English)
+    searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        filteredData = data.filter(item =>
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.body.toLowerCase().includes(searchTerm)
+        );
+        currentPage = 1;
+        renderPage(currentPage);
+        renderPagination();
+    });
+
+    // Filtering Functionality
+    filterSelect.addEventListener("change", () => {
+        const filterValue = filterSelect.value;
+        if (filterValue === "date") {
+            filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        } else if (filterValue === "title") {
+            filteredData.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        currentPage = 1;
+        renderPage(currentPage);
+        renderPagination();
+    });
+});
+    </script>
+    
 </body>
 </html>

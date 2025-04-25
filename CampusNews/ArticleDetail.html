@@ -5,42 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Details - Campus News</title>
     <link rel="stylesheet" href="../styles.css">
-    <div class="rgb-background"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <div class="rgb-background"></div>
 </head>
 <body>
-    <header>
-        <h1>Campus News</h1>
+    <header class="container">
         <nav>
-            <a href="../index.html" class="home-link">🏠 Home</a>
-            <a href="NewsAdmin.html" class="button">Add News</a>
+            <a href="MainNews.html" class="button">Back</a>
+            <h1>Article Details</h1>
+            <a href="../index.html" class="button">🏠 Home</a>
         </nav>
+        
     </header>
-    
     <main class="container">
         <article class="card article-detail">
-            <img src="art.png" alt="Article Image" class="article-image" id="article-image">
+            <img src="#" alt="Article Image" id="article-image">
             <div class="article-content">
-                <h2 id="article-title"></h2>
+                <br>
+                <h2 id="article-title">Loading...</h2>
                 <p class="meta" id="article-date"></p>
                 <div id="article-body"></div>
-                
-                <section class="comments">
-                    <h3>Comments</h3>
-                    <div class="comment-list" id="comment-list">
-                        <!-- Comments will be loaded here -->
-                    </div>
-                    <div class="add-comment">
-                        <textarea placeholder="Write your comment..." id="comment-text"></textarea>
-                        <button class="button" onclick="postComment()">Post Comment</button>
-                    </div>
-                </section>
-                
-                <a href="MainNews.html" class="button secondary">Back to News</a>
             </div>
+            <br>
+            <section class="comments">
+                <h3>Comments</h3>
+                <ul id="comment-list"></ul>
+                <textarea id="comment-input" placeholder="Write your comment..."></textarea>
+                <button class="button" onclick="addComment()">Add Comment</button>
+            </section>
         </article>
-    </main>
-
     
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const apiUrl = "Posts.json";
+            const articleId = new URLSearchParams(window.location.search).get("id");
+            const articleTitle = document.getElementById("article-title");
+            const articleDate = document.getElementById("article-date");
+            const articleBody = document.getElementById("article-body");
+            const articleImage = document.getElementById("article-image");
+            const commentList = document.getElementById("comment-list");
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const article = data.find(item => item.id == articleId);
+                    if (article) {
+                        articleTitle.textContent = article.title;
+                        articleDate.textContent = article.date;
+                        articleBody.textContent = article.body;
+                        articleImage.src = article.image;
+                        article.comments.forEach(comment => {
+                            const li = document.createElement("li");
+                            li.textContent = comment;
+                            commentList.appendChild(li);
+                        });
+                    } else {
+                        articleTitle.textContent = "Article not found";
+                    }
+                })
+                .catch(error => console.error("Error fetching article:", error));
+        });
+
+        function addComment() {
+            const commentInput = document.getElementById("comment-input");
+            const commentList = document.getElementById("comment-list");
+            if (commentInput.value.trim()) {
+                const li = document.createElement("li");
+                li.textContent = commentInput.value;
+                commentList.appendChild(li);
+                commentInput.value = "";
+            } else {
+                alert("Please write a comment.");
+            }
+        }
+    </script>
+    </main>
 </body>
 </html>

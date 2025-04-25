@@ -76,7 +76,7 @@ body {
     text-align: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(12px);
-    background: rgba(26, 26, 26, 0.85) !important;
+   
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     overflow: hidden;
 }
@@ -266,13 +266,28 @@ input, select, textarea {
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+} .filters {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.875rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    display: block;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus, select:focus, textarea:focus ,#filter-news:focus ,.filters:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(18, 52, 88, 0.25);
 }
+ .filters:focus {
+    
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(18, 52, 88, 0.25);
+}
+
 
 /* Navigation */
 nav {
@@ -320,14 +335,16 @@ nav {
 }
 
 /* Pagination */
-.pagination {
+.pagination , #pagination-controls {
     display: flex;
     gap: 0.75rem;
     justify-content: center;
     margin-top: 3rem;
+     
 }
 
-.pagination button {
+
+.pagination  button {
     padding: 0.75rem 1.25rem;
     background: var(--card-bg);
     border: 2px solid var(--border-color);
@@ -337,10 +354,22 @@ nav {
     transition: all 0.3s ease;
 }
 
-.pagination button:hover {
+.pagination ,#pagination-controls button:hover {
     border-color: var(--primary-color);
     background: var(--hover-bg);
 }
+#pagination-controls button {
+    padding: 0.75rem 1.25rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+   
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -518,7 +547,8 @@ nav {
         }
         table.card {
             padding: 0;
-            overflow-x: auto;
+           
+            background: rgba(26, 26, 26, 0.85) !important;
         }
 
         .news-thumb {
@@ -527,6 +557,7 @@ nav {
             object-fit: cover;
             border-radius: 4px;
             margin-right: 1rem;
+            background-color: #D4C9BE;
         }
 
         table tr td:first-child {
@@ -547,12 +578,15 @@ nav {
         }
 
         .delete {
-            background-color: #dc3545;
-            margin-left: 0.5rem;
+            background-color: #5c0d14;
+            
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9375rem;
         }
+    
 
         .delete:hover {
-            background-color: #bb2d3b;
+            background-color: #44080e;
         }
 
         .add-news form {
@@ -597,7 +631,7 @@ nav {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        .form-group ,#news-form label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
@@ -671,7 +705,7 @@ nav {
             max-width: 800px;
             margin: 2rem auto;
         }
-        .item-image {
+        .item-image ,#article-image{
             width: 100%;
             max-height: 400px;
             object-fit: cover;
@@ -688,6 +722,7 @@ nav {
             border-radius: 8px;
             margin-bottom: 1rem;
             transform: scale(1.03);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
         
         .review-content {
