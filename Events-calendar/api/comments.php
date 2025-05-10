@@ -38,7 +38,7 @@ switch ($method) {
           $stmt->execute([$data['commentId']]);
           echo json_encode(['success' => true]);
           break;
-      
+
 
     default:
         http_response_code(405);
