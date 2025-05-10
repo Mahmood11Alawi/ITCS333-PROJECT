@@ -2,7 +2,7 @@
 class EventsCalendar {
   constructor() {
     this.apiUrl =
-      "https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event"
+      "https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/calender-event.php"
     this.events = []
     this.currentPage = 1
     this.itemsPerPage = 6
@@ -76,7 +76,10 @@ class EventsCalendar {
     card.className = "event-card card"
     card.innerHTML = `
         <h3>${event.title}</h3>
-        <p>📅 ${new Date(event.date).toLocaleDateString()}</p>
+        <p>📅 ${new Date(event.date).toLocaleDateString()} | 🕒 ${new Date(
+      event.date
+    ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
+
         <p>📍 ${event.location}</p>
         <a href="event-detail.html?id=${
           event.id

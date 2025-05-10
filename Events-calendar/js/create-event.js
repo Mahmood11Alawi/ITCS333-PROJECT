@@ -1,7 +1,7 @@
 class EventCreator {
   constructor() {
     this.apiUrl =
-      "https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event"
+      "https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/calender-event.php"
     this.form = document.querySelector("form")
     this.init()
   }
