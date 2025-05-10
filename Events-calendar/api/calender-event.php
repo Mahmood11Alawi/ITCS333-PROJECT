@@ -24,7 +24,7 @@ switch ($method) {
                         WHERE e.id = ?");
     $stmt->execute([$id]);
     $event = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($event) {
         // Group comments under the event
         $stmt_comments = $pdo->prepare("SELECT * FROM comments WHERE event_id = ?");
@@ -42,7 +42,7 @@ switch ($method) {
                 ORDER BY c.created_at DESC
             ");
             $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+
             $eventsGrouped = [];
             foreach ($events as $event) {
                 if (!isset($eventsGrouped[$event['id']])) {
@@ -50,6 +50,7 @@ switch ($method) {
                         'id' => $event['id'],
                         'title' => $event['title'],
                         'time' => $event['time'],
+                        'date' => $event['date'],
                         'location' => $event['location'],
                         'organizer' => $event['organizer'],
                         'description' => $event['description'],
@@ -65,11 +66,11 @@ switch ($method) {
                     ];
                 }
             }
-    
+
             echo json_encode(array_values($eventsGrouped));
         }
         break;
-    
+
 
     case 'POST':
         $data = json_decode(file_get_contents("php://input"), true);
