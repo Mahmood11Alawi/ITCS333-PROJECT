@@ -11,7 +11,7 @@ class EventDetail {
   async fetchEvent() {
     try {
       const response = await fetch(
-        `https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event/${this.eventId}`
+        `https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/calender-event.php?id=${this.eventId}`
       )
       if (!response.ok) throw new Error("Event not found")
       const event = await response.json()
@@ -31,7 +31,10 @@ class EventDetail {
           <button class="secondary" id="deleteEventBtn">Delete Event</button>
         </div>
       </header>
-      <p>📅 ${new Date(event.date).toLocaleDateString()} | ${event.time}</p>
+      <p>📅 ${new Date(event.date).toLocaleDateString()} | 🕒 ${new Date(
+      event.date
+    ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
+
       <p>📍 ${event.location}</p>
       <p>🔖 Organized By: ${event.organizer}</p>
       <p>🔖 Category: ${event.category}</p>
@@ -44,7 +47,7 @@ class EventDetail {
         <div id="comments-container"></div>
       </section>
     `
-    this.renderComments(event.comment_ids || [])
+    this.renderComments(event.comments || [])
 
     document
       .getElementById("editEventBtn")
@@ -62,11 +65,11 @@ class EventDetail {
 
         try {
           await fetch(
-            `https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event/${this.eventId}/comments`,
+            `https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/comments.php?event_id=${this.eventId}`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ text }),
+              body: JSON.stringify({ event_id: this.eventId, text }),
             }
           )
           document.querySelector("textarea").value = ""
@@ -100,7 +103,7 @@ class EventDetail {
   async deleteComment(commentId) {
     try {
       await fetch(
-        `https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event/${this.eventId}/comments/${commentId}`,
+        `https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/comments.php?event_id=${this.eventId}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -119,7 +122,7 @@ class EventDetail {
     if (!confirm) return
     try {
       await fetch(
-        `https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event/${this.eventId}`,
+        `https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/calender-event.php?id=${this.eventId}`,
         { method: "DELETE" }
       )
       window.location.href = "events-calendar.html"
@@ -146,7 +149,7 @@ class EventDetail {
 
     try {
       await fetch(
-        `https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event/${this.eventId}`,
+        `https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/calender-event.php?id=${this.eventId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -164,7 +167,7 @@ class EventDetail {
   async editEvent() {
     try {
       const response = await fetch(
-        `https://680bd3072ea307e081d2723c.mockapi.io/campus/event/event/${this.eventId}`
+        `https://eb271d14-4d77-4c13-bbca-3db15cca8b8e-00-3q195n9bhfwrf.janeway.replit.dev/calender-event.php?id=${this.eventId}`
       )
       if (!response.ok) throw new Error("Event not found")
       const event = await response.json()
