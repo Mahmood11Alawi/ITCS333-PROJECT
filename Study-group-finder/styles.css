@@ -879,3 +879,71 @@ html, body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+.comments-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding-right: 0.5rem;
+}
+
+.comments-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.comments-list::-webkit-scrollbar-track {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+.comment-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.comment-text {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+}
+
+.comment-meta {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.post-comment {
+    width: 100%;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent-color);
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent-color);
+}
