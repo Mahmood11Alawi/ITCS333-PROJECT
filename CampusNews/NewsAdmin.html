@@ -34,35 +34,101 @@
             <input type="text" id="news-title" placeholder="Title" required />
             <textarea id="news-body" placeholder="Body" required></textarea>
             <input type="date" id="news-date" required />
-            <input type="file" id="news-image" accept="image/*" />
+            <input type="file" id="news-image" accept="image*" />
             <button class="button" type="submit">Save News</button>
         </form>
     </main>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const apiUrl = "Posts.json";
+            const apiUrl = "api/news.php";
             const tableBody = document.querySelector("#news-table tbody");
             const form = document.querySelector("#news-form");
             const titleInput = document.getElementById("news-title");
             const bodyInput = document.getElementById("news-body");
             const dateInput = document.getElementById("news-date");
             const imageInput = document.getElementById("news-image");
-            let data = [];
-            let editingIndex = null;
+            let editingId = null;
 
-            // Fetch news data from JSON file
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(fetchedData => {
-                    data = fetchedData;
-                    renderTable();
-                })
-                .catch(error => console.error("Error fetching news:", error));
+            // Fetch news data from API
+            function loadNews() {
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        renderTable(data);
+                    })
+                    .catch(error => console.error("Error fetching news:", error));
+            }
+
+            // Initial load
+            loadNews();
+
+            // Edit a news item
+            window.editNews = (id) => {
+                editingId = id;
+                fetch(`${apiUrl}?id=${id}`)
+                    .then(response => response.json())
+                    .then(newsItem => {
+                        titleInput.value = newsItem.title;
+                        bodyInput.value = newsItem.body;
+                        dateInput.value = newsItem.date;
+                    });
+            };
+
+            // Delete a news item
+            window.deleteNews = (id) => {
+                if (confirm("Are you sure you want to delete this news?")) {
+                    fetch(`${apiUrl}?id=${id}`, {
+                        method: 'DELETE'
+                    })
+                    .then(response => response.json())
+                    .then(() => loadNews())
+                    .catch(error => console.error("Error deleting news:", error));
+                }
+            };
+
+            // Handle form submission
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                try {
+                    const newsData = {
+                        title: titleInput.value,
+                        body: bodyInput.value,
+                        date: dateInput.value,
+                        image: imageInput.files[0] ? `images/${imageInput.files[0].name}` : "images/1.jpg"
+                    };
+
+                    const method = editingId ? 'PUT' : 'POST';
+                    const url = editingId ? `${apiUrl}?id=${editingId}` : apiUrl;
+
+                    const response = await fetch(url, {
+                        method: method,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(newsData)
+                    });
+
+                    const result = await response.json();
+                    
+                    if (!response.ok || result.error) {
+                        throw new Error(result.error || 'Failed to save news. Please try again.');
+                    }
+
+                    alert('News saved successfully!');
+                    form.reset();
+                    editingId = null;
+                    loadNews();
+                } catch (error) {
+                    console.error("Error saving news:", error);
+                    alert('Error saving news: ' + error.message);
+                }
+            });
 
             // Render news table
-            function renderTable() {
-                tableBody.innerHTML = data.map((item, index) => `
+            function renderTable(data) {
+                tableBody.innerHTML = data.map(item => `
                     <tr>
                         <td>
                             <img src="${item.image}" alt="${item.title}" class="news-thumb">
@@ -70,58 +136,11 @@
                         </td>
                         <td>${item.date}</td>
                         <td>
-                            <button class="button" onclick="editNews(${index})">Edit</button>
-                            <button class="delete" onclick="deleteNews(${index})">Delete</button>
+                            <button class="button" onclick="editNews(${item.id})">Edit</button>
+                            <button class="delete" onclick="deleteNews(${item.id})">Delete</button>
                         </td>
                     </tr>
                 `).join("");
-            }
-
-            // Edit a news item
-            window.editNews = (index) => {
-                editingIndex = index;
-                const newsItem = data[index];
-                titleInput.value = newsItem.title;
-                bodyInput.value = newsItem.body;
-                dateInput.value = newsItem.date;
-            };
-
-            // Delete a news item
-            window.deleteNews = (index) => {
-                if (confirm("Are you sure you want to delete this news?")) {
-                    data.splice(index, 1);
-                    renderTable();
-                    saveToJSON();
-                }
-            };
-
-            // Handle form submission
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const newNews = {
-                    title: titleInput.value,
-                    body: bodyInput.value,
-                    date: dateInput.value,
-                    image: imageInput.files[0] ? imageInput.files[0].name : "News1.jpg",
-                    comments: []
-                };
-
-                if (editingIndex !== null) {
-                    data[editingIndex] = newNews;
-                    editingIndex = null;
-                } else {
-                    newNews.id = data.length + 1;
-                    data.push(newNews);
-                }
-
-                form.reset();
-                renderTable();
-                saveToJSON();
-            });
-
-            // Simulated save function
-            function saveToJSON() {
-                console.log("Updated Data:", JSON.stringify(data, null, 2));
             }
         });
     </script>
