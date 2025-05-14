@@ -15,71 +15,96 @@
             <h1>Article Details</h1>
             <a href="../index.html" class="button">🏠 Home</a>
         </nav>
-        
     </header>
+
     <main class="container">
         <article class="card article-detail">
             <img src="#" alt="Article Image" id="article-image">
             <div class="article-content">
-                <br>
                 <h2 id="article-title">Loading...</h2>
                 <p class="meta" id="article-date"></p>
                 <div id="article-body"></div>
             </div>
-            <br>
-            <section class="comments">
-                <h3>Comments</h3>
-                <ul id="comment-list"></ul>
-                <textarea id="comment-input" placeholder="Write your comment..."></textarea>
-                <button class="button" onclick="addComment()">Add Comment</button>
-            </section>
         </article>
-    
+
+        <section id="comments-section">
+            <h3>Comments</h3>
+            <ul id="comment-list"></ul>
+            <textarea id="comment-input" placeholder="Write your comment..."></textarea>
+            <button class="button" id="submit-comment">Add Comment</button>
+        </section>
+    </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const apiUrl = "Posts.json";
-            const articleId = new URLSearchParams(window.location.search).get("id");
-            const articleTitle = document.getElementById("article-title");
-            const articleDate = document.getElementById("article-date");
-            const articleBody = document.getElementById("article-body");
-            const articleImage = document.getElementById("article-image");
-            const commentList = document.getElementById("comment-list");
+        
+            document.addEventListener("DOMContentLoaded", () => {
+                const articleId = new URLSearchParams(window.location.search).get("id");
+                const articleTitle = document.getElementById("article-title");
+                const articleDate = document.getElementById("article-date");
+                const articleBody = document.getElementById("article-body");
+                const articleImage = document.getElementById("article-image");
+                const commentList = document.getElementById("comment-list");
+                const commentInput = document.getElementById("comment-input");
+                const submitCommentButton = document.getElementById("submit-comment");
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const article = data.find(item => item.id == articleId);
-                    if (article) {
-                        articleTitle.textContent = article.title;
-                        articleDate.textContent = article.date;
-                        articleBody.textContent = article.body;
-                        articleImage.src = article.image;
-                        article.comments.forEach(comment => {
-                            const li = document.createElement("li");
-                            li.textContent = comment;
-                            commentList.appendChild(li);
-                        });
+                // Fetch article details
+                fetch(`api/news.php?id=${articleId}`)
+                    .then(response => response.json())
+                    .then(article => {
+                        if (article) {
+                            articleTitle.textContent = article.title;
+                            articleDate.textContent = article.date;
+                            articleBody.textContent = article.body;
+                            articleImage.src = article.image;
+                            loadComments(); // Load comments for the article
+                        } else {
+                            articleTitle.textContent = "Article not found";
+                        }
+                    })
+                    .catch(error => console.error("Error fetching article:", error));
+
+                // Load comments for the article
+                function loadComments() {
+                    fetch(`comments.php?event_id=${articleId}`)
+                        .then(response => response.json())
+                        .then(comments => {
+                            commentList.innerHTML = '';
+                            comments.forEach(comment => {
+                                const li = document.createElement("li");
+                                li.textContent = comment.text;
+                                commentList.appendChild(li);
+                            });
+                        })
+                        .catch(error => console.error("Error fetching comments:", error));
+                }
+
+                // Add a comment
+                submitCommentButton.addEventListener("click", () => {
+                    const commentText = commentInput.value.trim();
+                    if (commentText) {
+                        fetch(`comments.php`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ event_id: articleId, text: commentText })
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                commentInput.value = ''; // Clear the input
+                                loadComments(); // Reload comments
+                            } else {
+                                alert('Error adding comment: ' + result.error);
+                            }
+                        })
+                        .catch(error => console.error("Error adding comment:", error));
                     } else {
-                        articleTitle.textContent = "Article not found";
+                        alert("Please write a comment.");
                     }
-                })
-                .catch(error => console.error("Error fetching article:", error));
-        });
-
-        function addComment() {
-            const commentInput = document.getElementById("comment-input");
-            const commentList = document.getElementById("comment-list");
-            if (commentInput.value.trim()) {
-                const li = document.createElement("li");
-                li.textContent = commentInput.value;
-                commentList.appendChild(li);
-                commentInput.value = "";
-            } else {
-                alert("Please write a comment.");
-            }
-        }
+                });
+            });
+        
     </script>
-    </main>
 </body>
 </html>
